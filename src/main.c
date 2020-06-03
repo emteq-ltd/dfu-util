@@ -223,6 +223,45 @@ static struct option opts[] = {
 	{ 0, 0, 0, 0 }
 };
 
+/** Report the DFU device information which would have previously been reported via command-line "dfu-util -l"
+@note  EMTEQ: Added
+*/
+int deviceInfo(intptr_t sys_dev)
+{
+	libusb_context* ctx;
+
+	int ret = libusb_init(&ctx);
+	if (ret)
+	{
+		warnx("unable to initialize libusb: %s", libusb_error_name(ret));
+		return EX_IOERR;
+	}
+
+#if defined(LIBUSB_API_VERSION) && LIBUSB_API_VERSION >= 0x01000106
+	libusb_set_option(LIBUSB_OPTION_LOG_LEVEL, 255);
+#else
+	libusb_set_debug(ctx, 255);
+#endif
+
+	libusb_device_handle* dev_handle = 0;
+	ret = libusb_wrap_sys_device(ctx, sys_dev, &dev_handle );
+	if (ret)
+	{
+		warnx("unable to wrap sys-device libusb: %s", libusb_error_name(ret));
+		return EX_IOERR;
+	}
+
+	libusb_device* dev = libusb_get_device(dev_handle);
+	probe_device(dev);
+	
+	list_dfu_interfaces();
+
+
+	libusb_close(dfu_root->dev_handle);
+	dfu_root->dev_handle = NULL;
+	libusb_exit(ctx);
+}
+
 int main(int argc, char **argv)
 {
 	int expected_size = 0;
@@ -364,6 +403,13 @@ int main(int argc, char **argv)
 		printf("Waiting for device, exit with ctrl-C\n");
 	}
 
+#if 0
+	int r = system("su -c \"chmod -R 777 /sys/bus/usb/devices\"");
+	if (r != 0) {
+		errx(EX_IOERR, "Could not grant permissions to USB");
+		return -1;
+	}
+#endif
 	ret = libusb_init(&ctx);
 	if (ret)
 		errx(EX_IOERR, "unable to initialize libusb: %s", libusb_error_name(ret));

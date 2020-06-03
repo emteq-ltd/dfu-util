@@ -27,6 +27,10 @@ extern const char *match_iface_alt_name;
 extern const char *match_serial;
 extern const char *match_serial_dfu;
 
+/** Probe a single Libusb Device for the DFU descriptors 
+*/
+int probe_device(struct libusb_device* dev);
+
 void probe_devices(libusb_context *);
 void disconnect_devices(void);
 void print_dfu_if(struct dfu_if *);

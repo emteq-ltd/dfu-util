@@ -410,6 +410,16 @@ char *get_path(libusb_device *dev)
 #endif
 }
 
+int probe_device(struct libusb_device* dev)
+{
+	struct libusb_device_descriptor desc;
+	if (libusb_get_device_descriptor(dev, &desc))
+		return -1;
+
+	probe_configuration(dev, &desc);
+	return 0;
+}
+
 void probe_devices(libusb_context *ctx)
 {
 	libusb_device **list;
@@ -418,14 +428,12 @@ void probe_devices(libusb_context *ctx)
 
 	num_devs = libusb_get_device_list(ctx, &list);
 	for (i = 0; i < num_devs; ++i) {
-		struct libusb_device_descriptor desc;
 		struct libusb_device *dev = list[i];
 
 		if (match_path != NULL && strcmp(get_path(dev),match_path) != 0)
 			continue;
-		if (libusb_get_device_descriptor(dev, &desc))
-			continue;
-		probe_configuration(dev, &desc);
+
+		probe_device(dev);
 	}
 	libusb_free_device_list(list, 0);
 }
