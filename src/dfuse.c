@@ -27,13 +27,13 @@
 #include <errno.h>
 #include <string.h>
 
-#include "portable.h"
 #include "dfu.h"
 #include "usb_dfu.h"
 #include "dfu_file.h"
 #include "dfuse.h"
 #include "dfuse_mem.h"
 #include "quirks.h"
+#include "portable.h"
 
 #define DFU_TIMEOUT 5000
 

@@ -64,7 +64,7 @@
 # define O_BINARY   0
 #endif
 
-#ifndef off_t
+#if !defined(off_t) && !defined(_OFF_T_DEFINED)
 # define off_t long int
 #endif
 

@@ -21,8 +21,8 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
-#include "portable.h"
 #include "quirks.h"
+#include "portable.h"
 
 uint16_t get_quirks(uint16_t vendor, uint16_t product, uint16_t bcdDevice)
 {
