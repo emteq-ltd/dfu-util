@@ -230,7 +230,7 @@ int deviceInfo(intptr_t sys_dev)
 {
 	libusb_context* ctx;
 
-	int ret = libusb_init(&ctx);
+ 	int ret = libusb_init(&ctx);
 	if (ret)
 	{
 		warnx("unable to initialize libusb: %s", libusb_error_name(ret));
@@ -238,7 +238,7 @@ int deviceInfo(intptr_t sys_dev)
 	}
 
 #if defined(LIBUSB_API_VERSION) && LIBUSB_API_VERSION >= 0x01000106
-	libusb_set_option(LIBUSB_OPTION_LOG_LEVEL, 255);
+	libusb_set_option( ctx, LIBUSB_OPTION_LOG_LEVEL, 255);
 #else
 	libusb_set_debug(ctx, 255);
 #endif
@@ -254,6 +254,7 @@ int deviceInfo(intptr_t sys_dev)
 	libusb_device* dev = libusb_get_device(dev_handle);
 	probe_device(dev);
 	
+	//// @todo This ends up calling libusb_open again for whatever reason!? Needs deciphering/hacking or skip the probing attempt as a proof-of-concept!
 	list_dfu_interfaces();
 
 
@@ -416,7 +417,7 @@ int main(int argc, char **argv)
 
 	if (verbose > 2) {
 #if defined(LIBUSB_API_VERSION) && LIBUSB_API_VERSION >= 0x01000106
-		libusb_set_option(LIBUSB_OPTION_LOG_LEVEL, 255);
+		libusb_set_option(ctx, LIBUSB_OPTION_LOG_LEVEL, 255);
 #else
 		libusb_set_debug(ctx, 255);
 #endif
