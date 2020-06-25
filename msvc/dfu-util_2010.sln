@@ -1,15 +1,17 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dfu-util", "dfu-util_2010.vcxproj", "{0E071A60-7EF2-4427-BAA8-9143CACB5BCB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C4F8746D-B27E-4806-95E5-2052174E923B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dfu-suffix", "dfu-suffix_2010.vcxproj", "{8F7600A2-3B37-4956-B39B-A1D43EF29EDA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "getopt_2010", "..\..\libusbx\msvc\getopt_2010.vcxproj", "{AE83E1B4-CE06-47EE-B7A3-C3A1D7C2D71E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "getopt", "..\..\libusbx\msvc\getopt_2019.vcxproj", "{AE83E1B4-CE06-47EE-B7A3-C3A1D7C2D71E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libusb-1.0 (static)", "..\..\libusbx\msvc\libusb_static_2010.vcxproj", "{349EE8F9-7D25-4909-AAF5-FF3FADE72187}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libusb-1.0 (static)", "..\..\libusbx\msvc\libusb_static_2019.vcxproj", "{349EE8F9-7D25-4909-AAF5-FF3FADE72187}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,16 +23,20 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0E071A60-7EF2-4427-BAA8-9143CACB5BCB}.Debug|Win32.ActiveCfg = Debug|Win32
 		{0E071A60-7EF2-4427-BAA8-9143CACB5BCB}.Debug|Win32.Build.0 = Debug|Win32
-		{0E071A60-7EF2-4427-BAA8-9143CACB5BCB}.Debug|x64.ActiveCfg = Debug|Win32
+		{0E071A60-7EF2-4427-BAA8-9143CACB5BCB}.Debug|x64.ActiveCfg = Debug|x64
+		{0E071A60-7EF2-4427-BAA8-9143CACB5BCB}.Debug|x64.Build.0 = Debug|x64
 		{0E071A60-7EF2-4427-BAA8-9143CACB5BCB}.Release|Win32.ActiveCfg = Release|Win32
 		{0E071A60-7EF2-4427-BAA8-9143CACB5BCB}.Release|Win32.Build.0 = Release|Win32
-		{0E071A60-7EF2-4427-BAA8-9143CACB5BCB}.Release|x64.ActiveCfg = Release|Win32
+		{0E071A60-7EF2-4427-BAA8-9143CACB5BCB}.Release|x64.ActiveCfg = Release|x64
+		{0E071A60-7EF2-4427-BAA8-9143CACB5BCB}.Release|x64.Build.0 = Release|x64
 		{8F7600A2-3B37-4956-B39B-A1D43EF29EDA}.Debug|Win32.ActiveCfg = Debug|Win32
 		{8F7600A2-3B37-4956-B39B-A1D43EF29EDA}.Debug|Win32.Build.0 = Debug|Win32
-		{8F7600A2-3B37-4956-B39B-A1D43EF29EDA}.Debug|x64.ActiveCfg = Debug|Win32
+		{8F7600A2-3B37-4956-B39B-A1D43EF29EDA}.Debug|x64.ActiveCfg = Debug|x64
+		{8F7600A2-3B37-4956-B39B-A1D43EF29EDA}.Debug|x64.Build.0 = Debug|x64
 		{8F7600A2-3B37-4956-B39B-A1D43EF29EDA}.Release|Win32.ActiveCfg = Release|Win32
 		{8F7600A2-3B37-4956-B39B-A1D43EF29EDA}.Release|Win32.Build.0 = Release|Win32
-		{8F7600A2-3B37-4956-B39B-A1D43EF29EDA}.Release|x64.ActiveCfg = Release|Win32
+		{8F7600A2-3B37-4956-B39B-A1D43EF29EDA}.Release|x64.ActiveCfg = Release|x64
+		{8F7600A2-3B37-4956-B39B-A1D43EF29EDA}.Release|x64.Build.0 = Release|x64
 		{AE83E1B4-CE06-47EE-B7A3-C3A1D7C2D71E}.Debug|Win32.ActiveCfg = Debug|Win32
 		{AE83E1B4-CE06-47EE-B7A3-C3A1D7C2D71E}.Debug|Win32.Build.0 = Debug|Win32
 		{AE83E1B4-CE06-47EE-B7A3-C3A1D7C2D71E}.Debug|x64.ActiveCfg = Debug|x64
@@ -50,5 +56,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A446F1EA-4DEE-4AE5-9529-E6DDFBB7FD25}
 	EndGlobalSection
 EndGlobal
