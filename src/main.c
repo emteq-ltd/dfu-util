@@ -262,6 +262,8 @@ int deviceInfo(intptr_t sys_dev)
 	libusb_close(dfu_root->dev_handle);
 	dfu_root->dev_handle = NULL;
 	libusb_exit(ctx);
+
+	return EX_OK;
 }
 
 int main(int argc, char **argv)
@@ -541,8 +543,9 @@ probe:
 		libusb_close(dfu_root->dev_handle);
 		dfu_root->dev_handle = NULL;
 
+		libusb_exit(ctx);
+
 		if (mode == MODE_DETACH) {
-			libusb_exit(ctx);
 			exit(0);
 		}
 
@@ -554,6 +557,19 @@ probe:
 		/* Change match vendor and product to impossible values to force
 		 * only DFU mode matches in the following probe */
 		match_vendor = match_product = 0x10000;
+
+		ret = libusb_init(&ctx);
+		if(ret)
+			errx(EX_IOERR, "unable to initialize libusb: %s", libusb_error_name(ret));
+
+		if(verbose > 2)
+		{
+#if defined(LIBUSB_API_VERSION) && LIBUSB_API_VERSION >= 0x01000106
+			libusb_set_option(ctx, LIBUSB_OPTION_LOG_LEVEL, 255);
+#else
+			libusb_set_debug(ctx, 255);
+#endif
+		}
 
 		probe_devices(ctx);
 
