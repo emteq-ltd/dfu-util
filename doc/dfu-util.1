@@ -1,4 +1,4 @@
-.TH DFU-UTIL 1 "September 23, 2012"
+.TH DFU-UTIL 1 "July 2, 2020"
 .SH NAME
 dfu-util \- Device firmware update (DFU) USB programmer
 .SH SYNOPSIS
@@ -136,6 +136,7 @@ Specify the DFU interface number.
 Specify the altsetting of the DFU interface by name or by number.
 .TP
 .BR "\-S, \-\-serial" " [\fIRun-Time SERIAL\fP][,[\fIDFU Mode SERIAL\fP]]"
+.RS
 Specify the run-time and DFU mode serial numbers used to further restrict
 device matches.  If multiple, identical DFU devices are simultaneously
 connected to a system then vendor and product ID will be insufficient for
@@ -145,13 +146,14 @@ parameter to specify a serial number which also must match.
 If only a single serial number is specified, then the same serial number is
 used in both run-time and DFU mode. An empty serial number will match any
 serial number in the corresponding mode.
+.RE
 .TP
-.B "\-t, \-\-transfer-size" " SIZE"
+.BR "\-t, \-\-transfer-size" " SIZE"
 Specify the number of bytes per USB transfer. The optimal value is
 usually determined automatically so this option is rarely useful. If
 you need to use this option for a device, please report it as a bug.
 .TP
-.B "\-Z, \-\-upload-size" " SIZE"
+.BR "\-Z, \-\-upload-size" " SIZE"
 Specify the expected upload size, in bytes.
 .TP
 .BR "\-U, \-\-upload" " FILE"
@@ -161,12 +163,25 @@ Read firmware from device into
 .BR "\-D, \-\-download" " FILE"
 Write firmware from
 .B FILE
-into device. When FILE is \-, the firmware is read from stdin.
+into device. When
+.B FILE
+is \-, the firmware is read from stdin.
 .TP
 .B "\-R, \-\-reset"
 Issue USB reset signalling after upload or download has finished.
 .TP
-.BR "\-s, \-\-dfuse-address" " address"
+.B "\-e, \-\-detach"
+Request that the device re-enumerate out of run-time mode and into DFU mode as
+when uploading or downloading, but exit immediately after sending the request.
+.TP
+.BR "\-E, \-\-detach-delay" " SECONDS"
+When uploading or downloading, wait
+.B SECONDS
+seconds for the device to re-enumerate after sending the detach request before
+giving up. Defaults to 5 seconds. This option has no effect with \fB-e\fP,
+since that causes dfu-util to immediately exit after sending the detach request.
+.TP
+.BR "\-s, \-\-dfuse-address" " ADDRESS"
 Specify target address for raw binary download/upload on DfuSe devices. Do
 .B not
 use this for downloading DfuSe (.dfu) files. Modifiers can be added
