@@ -23,3 +23,4 @@ msvc/ipch/
 *.sdf
 *~
 .vs/
+/x64
