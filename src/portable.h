@@ -65,7 +65,7 @@
 #endif
 
 #if !defined(off_t) && !defined(_OFF_T_DEFINED)
-# define off_t long int
+//# define off_t long int
 #endif
 
 #endif /* PORTABLE_H */

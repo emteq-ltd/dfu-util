@@ -3,6 +3,7 @@
 #define DFU_FILE_H
 
 #include <stdint.h>
+#include <sys/types.h> //< off_t
 
 struct dfu_file {
     /* File name */

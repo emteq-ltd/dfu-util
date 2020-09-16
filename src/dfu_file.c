@@ -30,6 +30,7 @@
 
 #include "portable.h"
 #include "dfu_file.h"
+#include "libusb.h"
 
 #define DFU_SUFFIX_LENGTH 16
 #define LMDFU_PREFIX_LENGTH 8
